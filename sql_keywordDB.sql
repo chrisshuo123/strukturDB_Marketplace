@@ -75,5 +75,74 @@ describe iklanProdukTokped;
 
 /* 3.2 - GRUP IKLAN PRODUK (Shopee) */
 create table kelompokIklanShopee (
+    idKelompokIklanShopee int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    namaIklan Varchar(100) not null,
+    idStatus_fk int(10),
+    idJenisIklan_fk int(10),
+    kodeProduk int(10),
+    tampilanIklan int(10),
+    modeBidding Varchar(100),
+    penempatanIklan Varchar(100),
+    idJenisLaporan_fk int(10)
+);
 
+create table jenisLaporan (
+    idJenisLaporan int(10) primary key,
+    tanggalInput timestamp not null default current_timestamp,
+    jenisLaporan Varchar(100)
+);
+
+create table status (
+    idStatus int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    status Varchar(100)
+);
+
+create table jenisIklan (
+    idJenisIklan int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    jenisIklan Varchar(100)
+);
+
+create table dataKeseluruhanIklanShopee (
+    idDataKeseluruhan int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    tglMulai DATETIME,
+    tglSelesai DATETIME,
+    dilihat int(10),
+    jumlahKlik int(10),
+    persentaseKlik decimal(10,2),
+    konversi decimal(10,2),
+    konversiLangsung decimal(10,2),
+    tingkatKonversi decimal(10,2),
+    tingkatKonversiLangsung decimal(10,2),
+    biayaPerKonversi int(10),
+    biayaPerKonversiLangsung int(10),
+    ......
+);
+
+create table laporanPenempatanKataPencarianIklanShopee (
+    idKataPencarianShopee int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    kataPencarianPenempatan int(10),
+    idtipePencocokan_fk int(10),
+    tglMulai DATETIME,
+    tglSelesai DATETIME,
+    dilihat int(10),
+    jumlahKlik int(10),
+    persentaseKlik decimal(10,2),
+    konversi decimal(10,2),
+    konversiLangsung decimal(10,2),
+    tingkatKonversi decimal(10,2),
+    tingkatKonversiLangsung decimal(10,2),
+    biayaPerKonversi int(10),
+    biayaPerKonversiLangsung int(10),
+    ......
+);
+
+create table tipePencocokan (
+    idTipePencocokan int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    tipePencocokan Varchar(100)
 );
