@@ -80,10 +80,10 @@ create table kelompokIklanShopee (
     namaIklan Varchar(100) not null,
     idStatus_fk int(10),
     idJenisIklan_fk int(10),
-    kodeProduk int(10),
-    tampilanIklan int(10),
-    modeBidding Varchar(100),
-    penempatanIklan Varchar(100),
+    kodeProduk varchar(10),
+    tampilanIklan varchar(100),
+    idModeBidding_fk int(10), /* Belum diketik create table */
+    idPenempatanIklan_fk int(10), /* Belum diketik create table */
     idJenisLaporan_fk int(10)
 );
 
@@ -119,7 +119,19 @@ create table dataKeseluruhanIklanShopee (
     tingkatKonversiLangsung decimal(10,2),
     biayaPerKonversi int(10),
     biayaPerKonversiLangsung int(10),
-    ......
+    /* Lanjutannya */
+    produkTerjual int(10),
+    terjualLangsung int(10),
+    omsetPenjualan bigint(20),
+    penjualanLangsungGMV bigint(20),
+    biaya int(10),
+    efektivitasIklan decimal(10,2),
+    efektivitasLangsung decimal(10,2),
+    acos decimal(10,2),
+    acosLangsung decimal(10,2),
+    jumProdukDilihat int(10),
+    jumKlikProduk int(10),
+    persentaseKlikProduk decimal(10,2)
 );
 
 create table laporanPenempatanKataPencarianIklanShopee (
@@ -138,7 +150,19 @@ create table laporanPenempatanKataPencarianIklanShopee (
     tingkatKonversiLangsung decimal(10,2),
     biayaPerKonversi int(10),
     biayaPerKonversiLangsung int(10),
-    ......
+    /* Lanjutannya */
+    produkTerjual int(10),
+    terjualLangsung int(10),
+    omsetPenjualan bigint(20),
+    penjualanLangsungGMV bigint(20),
+    biaya int(10),
+    efektivitasIklan decimal(10,2),
+    efektivitasLangsung decimal(10,2),
+    acos decimal(10,2),
+    acosLangsung decimal(10,2),
+    jumProdukDilihat int(10),
+    jumKlikProduk int(10),
+    persentaseKlikProduk decimal(10,2)
 );
 
 create table tipePencocokan (
