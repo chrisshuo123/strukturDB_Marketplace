@@ -80,14 +80,23 @@ alter table semuaIklanProdukTokped
     rename column idStatus_fk to idStatusTokped_fk;
 alter table semuaIklanProdukTokped
     add column idKelompokIklanTokped_fk int(10) after tanggalInput;
+alter table semuaIklanProdukTokped
+	add column idTipeIklan_fk int(10) after tanggalInput;
+alter table semuaIklanProdukTokped
+	add column namaGrup varchar(100) after idTipeIklan_fk;
+alter table semuaIklanProdukTokped
+	drop column idKelompokIklanTokped_fk;
 
 select * from semuaIklanProdukTokped;
+
+drop table tipeiklan;
 
 /* 2. Iklan Produk Direkomendasi (Tokped) */
 create table iklanProdukRekomendTokped (
     idIklanRekomendasi int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
-    idKelompokIklanTokped_fk int(10),
+    idTipeIklan_fk int(10),
+    namaGrup varchar(100),
     namaProduk varchar(100) not null,
     idStatusTokped_fk int(10),
     pengeluaran bigint(20),
@@ -104,12 +113,14 @@ create table iklanProdukRekomendTokped (
     persentaseTerjual decimal(10,2),
     rataRata int(10)
 );
+describe iklanProdukRekomendTokped;
 
 /* 3. Iklan Produk di Pencarian */
 create table iklanProdukdiPencarian (
     idIklanPencarian int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
-    idKelompokIklanTokped_fk int(10),
+	idTipeIklan_fk int(10),
+    namaGrup varchar(100),
     namaProduk varchar(100) not null,
     idStatusTokped_fk int(10),
     pengeluaran bigint(20),
@@ -126,12 +137,14 @@ create table iklanProdukdiPencarian (
     persentaseTerjual decimal(10,2),
     rataRata int(10)
 );
+describe iklanProdukDiPencarian;
 
 /* 4. Iklan Toko */
 create table iklanTokoTokped (
     idIklanTokoTokped int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
-    idKelompokIklanTokped_fk int(10),
+	idTipeIklan_fk int(10),
+    namaGrup varchar(100),
     idStatusTokped_fk int(10),
     pengeluaran bigint(20),
     pendapatan bigint(20),
@@ -144,12 +157,14 @@ create table iklanTokoTokped (
     persentaseTerjual decimal(10,2),
     rataRata int(10)
 );
+describe iklanTokoTokped;
 
 /* 5. Laporan Pencarian */
 create table laporanPencarianTokped (
     idLaporanPencarian int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
-    idKelompokIklanTokped_fk int(10),
+	idTipeIklan_fk int(10),
+    namaGrup varchar(100),
     kataKunci varchar(100),
     pengeluaran bigint(20),
     pendapatan bigint(20),
@@ -159,15 +174,17 @@ create table laporanPencarianTokped (
     klik int(10),
     persentaseKlik decimal(10,2),
     terjual int(10),
-    rataRata int(10)
+    rataRata int(10),
     tampilTeratas int(10)
 );
+describe laporanPencarianTokped;
 
 /* 6. Kata Kunci */
 create table kataKunciTokped (
     idKataKunci int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
-    idKelompokIklanTokped_fk int(10),
+	idTipeIklan_fk int(10),
+    namaGrup varchar(100),
     idStatusTokped_fk int(10),
     idTipePencarian_fk int(10),
     idTipeKatakunci_fk int(10),
@@ -180,15 +197,17 @@ create table kataKunciTokped (
     persentaseKlik decimal(10,2),
     terjual int(10),
     totTerjual decimal(10,2),
-    rataRata int(10)
+    rataRata int(10),
     tampilTeratas int(10)
 );
+describe kataKunciTokped;
 
 create table statusTokped (
     idStatusTokped int(10) primary key,
     tanggalInput timestamp not null default current_timestamp,
     statusTokped varchar(100)
 );
+describe statusTokped;
 
 /* ================================ */
 /* 3.2 - GRUP IKLAN PRODUK (Shopee) */
