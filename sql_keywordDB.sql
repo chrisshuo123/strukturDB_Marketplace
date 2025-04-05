@@ -242,6 +242,7 @@ create table dataKeseluruhanIklanShopee (
     jumKlikProduk int(10),
     persentaseKlikProduk decimal(10,2)
 );
+describe dataKeseluruhanIklanShopee;
 
 create table laporanPenempatanKataPencarianIklanShopee (
     idKataPencarianShopee int(10) primary key auto_increment,
@@ -282,21 +283,39 @@ create table laporanPenempatanKataPencarianIklanShopee (
     jumKlikProduk int(10),
     persentaseKlikProduk decimal(10,2)
 );
-
-create table tipePencocokan (
-    idTipePencocokan int(10) primary key auto_increment,
-    tanggalInput timestamp not null default current_timestamp,
-    tipePencocokan Varchar(100)
-);
+describe laporanPenempatanKataPencarianIklanShopee;
 
 create table statusShopee (
-    idStatusShopee int(10) primary key auto_increment,
+    idStatusShopee int(10) primary key,
     tanggalInput timestamp not null default current_timestamp,
     status Varchar(100)
 );
+describe statusShopee;
 
-create table jenisIklan (
-    idJenisIklan int(10) primary key auto_increment,
+create table jenisIklanShopee (
+    idJenisIklan int(10) primary key,
     tanggalInput timestamp not null default current_timestamp,
     jenisIklan Varchar(100)
 );
+describe jenisIklanShopee;
+
+create table modeBiddingShopee (
+	idModeBidding int(10) primary key,
+    tanggalInput timestamp not null default current_timestamp,
+    modeBidding varchar(100)
+);
+describe modeBiddingShopee;
+
+create table penempatanIklanShopee (
+	idPenempatanIklan int(10) primary key,
+    tanggalInput timestamp not null default current_timestamp,
+    penempatanIklan varchar(100)
+);
+describe penempatanIklanShopee;
+
+create table tipePencocokanShopee (
+    idTipePencocokan int(10) primary key,
+    tanggalInput timestamp not null default current_timestamp,
+    tipePencocokan Varchar(100)
+);
+describe tipePencocokanShopee;
