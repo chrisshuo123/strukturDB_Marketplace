@@ -204,36 +204,6 @@ describe statusTokped;
 
 /* ================================ */
 /* 3.2 - GRUP IKLAN PRODUK (Shopee) */
-create table kelompokIklanShopee (
-    idKelompokIklanShopee int(10) primary key auto_increment,
-    tanggalInput timestamp not null default current_timestamp,
-    namaIklan Varchar(100) not null,
-    idStatusShopee_fk int(10),
-    idJenisIklan_fk int(10),
-    kodeProduk varchar(10),
-    tampilanIklan varchar(100),
-    idModeBidding_fk int(10), /* Belum diketik create table */
-    idPenempatanIklan_fk int(10), /* Belum diketik create table */
-    idJenisLaporan_fk int(10)
-);
-
-create table jenisLaporan (
-    idJenisLaporan int(10) primary key,
-    tanggalInput timestamp not null default current_timestamp,
-    jenisLaporan Varchar(100)
-);
-
-create table statusShopee (
-    idStatusShopee int(10) primary key auto_increment,
-    tanggalInput timestamp not null default current_timestamp,
-    status Varchar(100)
-);
-
-create table jenisIklan (
-    idJenisIklan int(10) primary key auto_increment,
-    tanggalInput timestamp not null default current_timestamp,
-    jenisIklan Varchar(100)
-);
 
 create table dataKeseluruhanIklanShopee (
     idDataKeseluruhan int(10) primary key auto_increment,
@@ -286,7 +256,7 @@ create table laporanPenempatanKataPencarianIklanShopee (
     idPenempatanIklan_fk int(10), /* Belum diketik create table */
     /* --------------- */
     kataPencarianPenempatan int(10),
-    idtipePencocokan_fk int(10),
+    idTipePencocokan_fk int(10),
     tglMulai DATETIME,
     tglSelesai DATETIME,
     dilihat int(10),
@@ -317,4 +287,16 @@ create table tipePencocokan (
     idTipePencocokan int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
     tipePencocokan Varchar(100)
+);
+
+create table statusShopee (
+    idStatusShopee int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    status Varchar(100)
+);
+
+create table jenisIklan (
+    idJenisIklan int(10) primary key auto_increment,
+    tanggalInput timestamp not null default current_timestamp,
+    jenisIklan Varchar(100)
 );
