@@ -45,13 +45,6 @@ alter table kelompokIklanTokped
     
 describe kelompokIklanTokped;
 
-create table tipeIklan (
-	idTipeIklan int(10) primary key,
-    tipeIklan varchar(100)
-);
-alter table tipeIklan
-	add column tanggalInput timestamp not null default current_timestamp after idTipeIklan;
-
 /* 1. Semua Iklan Produk (Tokped) */
 create table iklanProdukTokped (
 	idIklanProdukTokped int(10) primary key auto_increment,
@@ -245,6 +238,15 @@ create table jenisIklan (
 create table dataKeseluruhanIklanShopee (
     idDataKeseluruhan int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
+    /* Yang dari table kelompok */
+    namaIklan Varchar(100) not null,
+    idStatusShopee_fk int(10),
+    idJenisIklan_fk int(10),
+    kodeProduk varchar(10),
+    tampilanIklan varchar(100),
+    idModeBidding_fk int(10), /* Belum diketik create table */
+    idPenempatanIklan_fk int(10), /* Belum diketik create table */
+    /* --------------- */
     tglMulai DATETIME,
     tglSelesai DATETIME,
     dilihat int(10),
@@ -274,6 +276,15 @@ create table dataKeseluruhanIklanShopee (
 create table laporanPenempatanKataPencarianIklanShopee (
     idKataPencarianShopee int(10) primary key auto_increment,
     tanggalInput timestamp not null default current_timestamp,
+    /* Yang dari table kelompok */
+    namaIklan Varchar(100) not null,
+    idStatusShopee_fk int(10),
+    idJenisIklan_fk int(10),
+    kodeProduk varchar(10),
+    tampilanIklan varchar(100),
+    idModeBidding_fk int(10), /* Belum diketik create table */
+    idPenempatanIklan_fk int(10), /* Belum diketik create table */
+    /* --------------- */
     kataPencarianPenempatan int(10),
     idtipePencocokan_fk int(10),
     tglMulai DATETIME,
